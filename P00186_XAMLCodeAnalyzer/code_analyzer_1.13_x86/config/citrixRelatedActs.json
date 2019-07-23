@@ -1,0 +1,16 @@
+[
+  "ClickImage",
+  "HoverImage",
+  "WaitImageAppear",
+  "FindImageMatches",
+  "ImageFound",
+  "WaitImageVanish",
+  "OnImageAppear",
+  "OnImageVanish",
+  "ClickImageTrigger",
+  "ClickOCRText",
+  "HoverOCRText",
+  "FindOCRText",
+  "GetOCRText",
+  "OCRTextExists"
+]

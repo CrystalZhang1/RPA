@@ -1,0 +1,22 @@
+{
+  "String":"str",
+  "Int32":"int",
+  "Double":"dbl",
+  "Boolean":"bl",
+  "Dictionary":"dic",
+  "DynamicValue":"dv",
+  "Object":"obj",
+  "DataSet":"ds",
+  "DataTable":"dt",
+  "DataRow":"dr",
+  "DataColumn": "dc",
+  "DateTime":"dtm",
+  "Array":"arr",
+  "List":"lst",
+  "GenericValue":"gen",
+  "UiElement":"elem",
+  "Browser":"brws",
+  "Window":"wnd",
+  "MailMessage": "mail",
+  "Exception" : "e"
+}
