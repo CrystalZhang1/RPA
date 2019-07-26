@@ -1,0 +1,16 @@
+﻿尊敬的processName流程机器人管理员：<br />
+<br />
+您好！<br />
+<br />
+机器人运行processName流程完成，悉知。<br />
+<br />
+本次运行mailBodyTypeCount个类型的付款凭证，分别为mailBodyType。<br />
+本次运行针对mailBodyPACount张发票进行付款，应生成mailBodyGLCountT笔凭证。<br />
+实际运行<span style="color:#009900;">成功生成凭证mailBodyGLCountS个</span>，<span style="color:#E53333;">失败mailBodyGLCountF个</span>。<br />
+凭证明细内容请参考附件。<br />
+<br />
+运行开始时间dateStart<br />
+运行结束时间dateEnd<br />
+<br />
+谢谢！<br />
+processName流程机器人
