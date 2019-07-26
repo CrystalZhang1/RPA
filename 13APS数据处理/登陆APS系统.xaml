@@ -1,0 +1,351 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="登陆APS系统"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ss="clr-namespace:System.Security;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="apsWebsiteArg" Type="InArgument(x:String)" />
+    <x:Property Name="successFlagArg" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="nameAPSCredentialArg" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>登陆APS系统_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="登陆APS系统" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="apsWebsite" />
+      <Variable x:TypeArguments="x:Int32" Name="countLoop" />
+      <Variable x:TypeArguments="x:Boolean" Name="loginOrNot" />
+      <Variable x:TypeArguments="x:Boolean" Default="True" Name="successFlag" />
+    </Sequence.Variables>
+    <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="登陆APS系统" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="credential" />
+          </Sequence.Variables>
+          <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="登陆APS系统开始" />
+          <Sequence DisplayName="传递变量" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_14">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[apsWebsite]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[apsWebsiteArg]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_26">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[credential]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[nameAPSCredentialArg]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          <Sequence DisplayName="登陆进程" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_19">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[countLoop]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+            <DoWhile DisplayName="Do while" sap2010:WorkflowViewState.IdRef="DoWhile_2" Condition="[not loginOrNot]">
+              <If Condition="[countLoop&lt;3]" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Then>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill process" sap2010:WorkflowViewState.IdRef="KillProcess_3" ProcessName="iexplore" />
+                    <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open browser" Hidden="False" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" NewSession="True" Private="False" Url="[apsWebsite]">
+                      <ui:OpenBrowser.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <Sequence DisplayName="凭据管理器登陆" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="name" />
+                                <Variable x:TypeArguments="ss:SecureString" Name="securePassword" />
+                              </Sequence.Variables>
+                              <ui:GetSecureCredential CredentialType="Generic" DisplayName="Get secure credential" sap2010:WorkflowViewState.IdRef="GetSecureCredential_1" Password="[securePassword]" PersistanceType="Enterprise" Target="[credential]" Username="[name]" />
+                              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  txt_username'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_6" SendWindowMessages="False" SimulateType="False" Text="[name+ &quot;[k(tab)]&quot;]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0b3af90d7eace57cbce389eb89e5718f" Selector="&lt;webctrl id='txt_username' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                              <ui:TypeSecureText DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type secure text 'INPUT  pwd_password'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[securePassword]" SendWindowMessages="False" SimulateType="False">
+                                <ui:TypeSecureText.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0d174a336b1e0d56b2ad59e15c441874" Selector="&lt;webctrl id='pwd_password' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                                </ui:TypeSecureText.Target>
+                              </ui:TypeSecureText>
+                            </Sequence>
+                            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT  btn_login'" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="48430e6cee6c02bf3337e28f0e48876c" Selector="&lt;webctrl id='btn_login' tag='INPUT' type='button' /&gt;" WaitForReady="INTERACTIVE" />
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:ImageFound DisplayName="Image Exists 'iexplore.exe  智奇APS高级排程...'" Found="[loginOrNot]" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+                              <ui:ImageFound.Image>
+                                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="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" />
+                              </ui:ImageFound.Image>
+                              <ui:ImageFound.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='智奇APS高级排程系统' /&gt;" TimeoutMS="6000" WaitForReady="COMPLETE" />
+                              </ui:ImageFound.Target>
+                            </ui:ImageFound>
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_20">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[countLoop]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[countLoop+1]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;元素是否出现&quot;+ loginOrNot.ToString+&quot;，这是第&quot;+countLoop.ToString+&quot;次登陆&quot;]" />
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:OpenBrowser.Body>
+                    </ui:OpenBrowser>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="抛出异常" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <ui:KillProcess Process="{x:Null}" ContinueOnError="True" DisplayName="Kill process" sap2010:WorkflowViewState.IdRef="KillProcess_4" ProcessName="iexplore" />
+                    <Throw Exception="[new exception(&quot;登陆APS失败&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                  </Sequence>
+                </If.Else>
+              </If>
+            </DoWhile>
+          </Sequence>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_23">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="登陆APS系统结束" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_22">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;APS登陆异常&quot;+exception.ToString]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <sads:DebugSymbol.Symbol>dzVDOlxaUVJQQVxaUVJQQVwxM0FQU+aVsOaNruWkhOeQhlznmbvpmYZBUFPns7vnu58ueGFtbEpIA+4BDgIBAU01TTsCAQJPBewBEAIBA1EJzgEUAgER1gEN6AEYAgEEVQtVhgECAWJWC2cWAgFXaAu8ARYCAR29AQvEARQCARnFAQvMARQCARTNAQvNAYYBAgES1wEP3gEYAgEN3wEP5gEYAgEI5wEP5wGpAQIBBVV4VYMBAgFjVw1eFgIBXV8NZhYCAVhpDXAWAgFTcQ27ARcCAR7CATfCATsCARy/ATi/AUUCARrKATfKAUQCARfHATjHAUgCARXNAXjNAYMBAgET3AE73AFAAgEQ2QE82QFJAgEO5AE75AFIAgEL4QE84QFMAgEJ5wF85wGmAQIBBlw4XEcCAWBZOVlFAgFeZDhkTgIBW2E5YUUCAVluN244AgFWazhrQwIBVHFjcXUCAVFyD7oBFAIBH3Idci8CASB0E7IBHgIBKLUBE7gBHgIBInUVdbMBAgFOdhWxASYCASm2ARW2AbMBAgEltwEVtwF5AgEjdUh1TgIBUHWmAXWwAQIBT3bLAXbZAQIBTHwbrgEmAgEqtgFItgFOAgEntgGmAbYBsAECASa3ASa3AUwCASR9HY0BKAIBPI4BHZwBKAIBOp0BHaQBLQIBNKUBHawBJgIBL60BHa0B1gECASuCAR+CAY8CAgFFgwEfhwEtAgFBiAEfjAEzAgE9mgGwAZoB7AECATuiAWKiAYYBAgE5ogGRAaIBlwECATidAWqdAXgCATafAUufAVACATWqAUeqAVQCATKnAUinAVMCATCtAXStAdMBAgEsggHsAYIB+gECAUqCAYQCggGMAgIBSIIBtQGCAccBAgFGhQGyAYUB4wECAUSDAb4CgwHcAgIBQooBsgGKAeMBAgFAiAGnAogBuQICAT4=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="731,95" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_26" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="731,286">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_19" sap:VirtualizedContainerService.HintSize="709,61" />
+      <sap2010:ViewStateData Id="KillProcess_3" sap:VirtualizedContainerService.HintSize="414,22" />
+      <sap2010:ViewStateData Id="GetSecureCredential_1" sap:VirtualizedContainerService.HintSize="314,22" />
+      <sap2010:ViewStateData Id="TypeInto_6" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="TypeSecureText_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="336,466">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="336,106" />
+      <sap2010:ViewStateData Id="ImageFound_1" sap:VirtualizedContainerService.HintSize="336,106" />
+      <sap2010:ViewStateData Id="Assign_20" sap:VirtualizedContainerService.HintSize="336,61" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="336,63" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="358,1086">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="OpenBrowser_2" sap:VirtualizedContainerService.HintSize="414,1185">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="436,1371">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="KillProcess_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Throw_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="683,1524" />
+      <sap2010:ViewStateData Id="DoWhile_2" sap:VirtualizedContainerService.HintSize="709,1691" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="731,1916">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="731,61" />
+      <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="731,61" />
+      <sap2010:ViewStateData Id="LogMessage_4" sap:VirtualizedContainerService.HintSize="731,95" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="753,2838">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="Assign_22" sap:VirtualizedContainerService.HintSize="314,61" />
+      <sap2010:ViewStateData Id="LogMessage_5" sap:VirtualizedContainerService.HintSize="314,95" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="336,421">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="757,23">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="771,3075" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="793,3199">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="登陆APS系统_1" sap:VirtualizedContainerService.HintSize="833,3319" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

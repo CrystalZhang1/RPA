@@ -1,0 +1,512 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="新造及非高铁主材需求"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="directoryASPListName" Type="InArgument(x:String)" />
+    <x:Property Name="successFlagArg" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="directoryResultArg" Type="InArgument(x:String)" />
+    <x:Property Name="dateYearArg" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>新造及非高铁主材需求_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="新造及非高铁主材需求" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="successFlag" />
+        <Variable x:TypeArguments="x:String" Name="directoryResult" />
+        <Variable x:TypeArguments="x:String" Name="fileName" />
+        <Variable x:TypeArguments="x:Boolean" Name="elementExist" />
+        <Variable x:TypeArguments="x:String" Name="year" />
+      </TryCatch.Variables>
+      <TryCatch.Try>
+        <Sequence DisplayName="导出表格" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="新造及非高铁主材需求导出开始" />
+          <Sequence DisplayName="变量准备" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[directoryResult]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[directoryResultArg]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[fileName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[directoryASPListName]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[year]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[dateYearArg]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          <Sequence DisplayName="导出过程" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  http://172.31.2.21:1...'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="c9c264083a553a63e723084577993b54" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='决策支持报表' tag='A' /&gt;" WaitForReady="COMPLETE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:Hover DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Hover 'A  http://172.31.2.21:1...'" sap2010:WorkflowViewState.IdRef="Hover_1" SendWindowMessages="False" SimulateHover="False">
+              <ui:Hover.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Hover.CursorPosition>
+              <ui:Hover.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="e615485f4c148090a19b6be590b31312" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='需求类报表' tag='A' /&gt;" WaitForReady="COMPLETE" />
+              </ui:Hover.Target>
+            </ui:Hover>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  http://172.31.2.21:1...'" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="6b515fe7f540119fdbde45cf648be9e4" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='新造及非高铁主材需求' tag='A' /&gt;" WaitForReady="COMPLETE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:UiElementExists DisplayName="Element Exists 'TD'" Exists="[elementExist]" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="01ae72f2aa0a48bb6ad8948765f13c78" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' parentid='NewMaterialDemandGrid' tag='TABLE' /&gt;&lt;webctrl idx='1' tag='TD' /&gt;" TimeoutMS="10000" WaitForReady="INTERACTIVE" />
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <ui:WaitImageVanish DisplayName="Wait Image Vanish 'iexplore.exe  智奇APS高级排程...'" sap2010:WorkflowViewState.IdRef="WaitImageVanish_2">
+              <ui:WaitImageVanish.Image>
+                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="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" />
+              </ui:WaitImageVanish.Image>
+              <ui:WaitImageVanish.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='智奇APS高级排程系统' /&gt;" TimeoutMS="6000" WaitForReady="INTERACTIVE" />
+              </ui:WaitImageVanish.Target>
+            </ui:WaitImageVanish>
+            <If Condition="[elementExist]" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  filter_NewMateri...'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_6" SendWindowMessages="False" SimulateType="False" Text="[year+&quot;/01/01&quot;]">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="fb92f2e33cff720099d33eea2cfd02c0" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl id='filter_NewMaterialDemandDATE' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'INPUT  filter_NewMateri...'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_7" SendWindowMessages="False" SimulateType="False" Text="[year+&quot;/12/31&quot;]">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="b2da569555ba0e49d05aea64c06e4473" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl id='filter_NewMaterialDemandDATEt' tag='INPUT' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A'" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="a8597b60f201a49801ff7c872b035b46" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='查询' parentid='toolbarNewMaterialDemand' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:WaitImageVanish DisplayName="Wait Image Vanish 'iexplore.exe  智奇APS高级排程...'" sap2010:WorkflowViewState.IdRef="WaitImageVanish_3">
+                    <ui:WaitImageVanish.Image>
+                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="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" />
+                    </ui:WaitImageVanish.Image>
+                    <ui:WaitImageVanish.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='智奇APS高级排程系统' /&gt;" TimeoutMS="6000" WaitForReady="COMPLETE" />
+                    </ui:WaitImageVanish.Target>
+                  </ui:WaitImageVanish>
+                  <ui:WaitImageVanish DisplayName="Wait Image Vanish 'iexplore.exe  智奇APS高级排程...'" sap2010:WorkflowViewState.IdRef="WaitImageVanish_4">
+                    <ui:WaitImageVanish.Image>
+                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAANIAAACnCAYAAABkdgIwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAA1DSURBVHhe7dpNjhxFF4VhrwA2gPAYMEN6wgAjRraYWCCBBIJPCIEYWGLCBCH1OrwWr4W19OdTzcW3b7+ZnT+VQWbUKekRWZlxI6vjxqksEI+e/++3m+vr68P69qdfbh49foLX5NMvv7p5/+rpvfMff/78VCfvfnR177rOjV0/iqP391zUQ+0VHec98evL3//dP7GXYlx49s33/47XPKrP1091Xui+ub93g6Dj/MWYgyQRJp2Pc7meOEgXwP29PoVAmz1ConNxLPp1ksfX4AwFKepPvNB9c3/bcJA65/624SB1zv1tw0HqnPvbhoPUOfe3DQepc+5vGw5S59zfNhykzrm/bThInXN/23CQOuf+tuEgdc79bcNB6pz724aD1Dn3tw0HqXPubxsOUufc3zYcpM65v204SJ1zf9twkHbu1atXd9CYMe5vGw7SjtUQBRo7xP1tw0HaKQpQRjXE/W3DQdopCk9GNcT9beMUpD/+/Mt2hsKTUQ1xf9twkHaKwpNRDXF/23CQdorCk1ENcX/bcJB2isKTUQ1xf9twkGZYupmXqPeqqIYs6e/Se10yB2miurkCjT0HuldGNWRuf+leQmPtLQdpAtpYGdWsRffJqIbM6S/dJ6Mau+UgTUCbKqOateg+GdUQB6kNB2kC2lQV1a1B98iohkztL92jojq75SBNQJuKUO1SNH9GNWRKf2l+QrV2y0GaiDZWRXVL0fwZ1ZBzBYnq7C0HaQbaYBXVLUFzZ1RDHuovzV1Rnd3lIM1Am6yiuiVo7oxqiIPUhoM0E220iurmonkzqiFj/aV5K6qz+xykmWizEaqdg+bMqIYM9ZfmJFRr9zlIC9CGq6huDpozoxqyJkhUZ8xBWoA2HaHaqWi+jGoI9ZfmI7XOhjlIC9HGq6huKpovoxqyNEi1xsY5SCvQBqyobgqaK6MaUvtLc1V5vE3jIK1Am7CiuiloroxqiIPUhoO0Em3EiuoeQvNkVENyf2meKtfadA7SSrQZCdWOoTkyqiHRX5qD1HqbxkE6A9qQFdWNoTkyqiFzglRrbbrDB+nH317ePHr8BK/JF19/d/PeJ0/vnb96/uJUJ+98eHXvumri+gefPbt3PaNNSah2CNVnVEPUX6onVN8L7YPo5xS550N7KLz44edjBylCJHQ9Fq8ugkKUw6NFy2Pqe41VTbwntDErqhtDcwiNHTI1SFTbk6EwaH9oH9XzWddB0h8W3xwUpLGNomBoceJ9BDIWVMdanLiuEI0tZKj3JFQ35tz1hOrO7b+4Z5bDEHtnSDyNYm9lqsX6owYpnhCnb4M3f0i+VpsW4rrG56BIDVe99tATSeieFdVtiT5DRXXnRPcUGruVGqShXqvPEaRQf6FUp2Ad+aed1CBRwyqNr49zClJ88+haPj+G7pdRzZboM2RUcy50v4rqtrDkiRTytXxeYt6LDFLI84w9kXSeFpHQfTKq2RJ9hoxq1qL7DKH6LdQgDfW6PpGiLmrql6r2xWkPXnKQgurGgiSxYHStonsIjd2a+kufRWj8GnSPh9A8W6hBUj+H5CDFvohaBS32ia5pTzhIiebQz736Hx6Czk0NktT5aUwL0d+tP0+dfyqaawv5SRNPFx1Hv2lcHOcgBb3XdR13GSShhk2lei1SXjgtZn2kH8XW/aU1nIrm24p6GBtf1F/tnRwknctfoLEHapC0FyJs0m2QhBo3hxZL88pRQyRb9ZfWbA6ac0vxM0zHClQEIwcp9lKMCzlImicHUroI0kOoiXPQnEdy7v7SGs1Bc24tB0HH+Yux/rSLMOUnE/20yy4iSEINnYPmPIpz9pfWZg6aswWFQJs9QqJzcSz5Z5rU4AwFKepPLiFIgZo7B825d+foL63FHDRnby4qSIGaPQfNuVdr+kt/+xw0Z68uMkhCjZ+D5tyjpf2lv3kOmrNnFxukQJtgKppvb5b0l/7WqWi+S3DxQQq0KR5C8+xNqyDRPJfEQSpokwyh+r3ZOkhUf4kcJEAbhlDt3mwZJKq9VA7SCNo8gcbv0dL+0t8caPylc5AmOPJGWtPfI//drTlInXN/23CQOuf+tuEgdc79bcNB6pz724aD1Dn3tw0HqXPubxsOUufc3zYcpM65v204SJ1zf9twkDrn/rZx2CDV/31lK3TvIzl3f2mNtkD33rNDBokWfkv0GY7inP2ltdkSfYa9OgXp+vr6MGjBW6DPcgTn6i+tSQv0WfbIQZqIPssROEhtOEgT0Wc5AgepDQdpIvosR+AgtXG4IAkt+JboMxzFOftLa7Ml+gx7dcggCS38FujeR3Lu/tIabYHuvWeHDZJN4/624SB1zv1tw0HqnPvbhoPUOfe3DQepc+5vGw5S59zfNhykzrm/bThInXN/23CQOuf+tuEgdc79bcNBmqC+aMxerenv0f+3nZYcpBFjLxq/R0v7W0OU0fhL5yCBqS+q3Zsl/aXwEKq9VA5SMedF9XuzZZCE6i+Rg/SPJS+aZ2+2DlKgeS7JxQdpzYvm25tWQQo03yW42CCtfdGce7S0vxSSOWjOnh0+SL++/P3m0eMneE2effP9zftXT++cW/vKc+3dmv5SQOagOf8r2gfaJ1N9/PnzO7V1D2Xf/vTLsYMUIRK6HosXi7D2Vec/gnP0l0IyB83Z2lAYtD+0j+r5rOsg6Q+Lbw4Kks7F9bWvT7/8anQh9+yc/aWQzEFztpLDEHtnSDyNYm9lqsX6owZJm1v/PH0bvPlDhq6vfWmOdz+6+ne+ozl3fykgc9CcLdQg6X0dI+pz/lkneh+15BSsowYpDAVp7UtzxDePglTnP4qt+kshmYPm3NKSJ1LI1/J5iXm7DNKaV54naLFoEY9g6/5SSKai+bay9IkUdVFTv1S1Lw7/HxukBmnpSws0tLgSC0bXyN9//30HjWkh+rv1Jq7zT0VzbaEGSf0ckoMU+yJqFbTYJ7qmPeEg/fOK//qnf+bjfB+dmxqkGqJAY7em/tIGFhq/Bt3jITTPFvKTJp4uOo5+07g4zkEKeq/rOr74IEWNFisvlI7ze12f+u9JFKCMarZEmzejmrXoPkOofgvqYWx8UX+1d3KQdC5/gcYeqEHSXoiwycUGSeO0EKoTConOjV0fQuHJqGZLtHkzqjkXul9FdVtQD7VXdKxARTBykGIvxbiQg6R5ciCliyCRoReNPScKTkV1W6LNW1HdOdE9hcZuIQdBx/mLsf60izDlJxP9tMu6DZLUF405NwpORXVjXr9+fQeNGUMbuKK6c/sv7hkUAm32CInOxbHkn2lSgzMUpKg/6TVIrVFoKqobU0MUaOwQ9bduYkK1Np2DdAYUGkK1QyhAGdWQqUESqrdpHKQzoNBUVDeGwpNRDYn+UnCqWmvTOUgrUWgI1Y6h8GRUQ+YESWq9TeMgrUShqajuIRSejGpI7i8Fp8q1Np2DtAKFpqK6KSg8GdWQ2l8KT5XH2zQO0goUnIrqpqDwZFRDHKQ2HKSFKDQV1U1F4cmohlB/KTxVrbFxDtICFBpCtVNReDKqIUuDJLXOhjlIC1BoKqqbg8KTUQ0Z6i8Fp6I6Yw7STBQaQrVzUHgyqiFrgiRUa/c5SDNRaCqqm4vCk1ENGesvBaeiOrvPQZqBQlNR3RIUnoxqyEP9pfBUVGd3OUgzUHAqqluCwpNRDXGQ2nCQJqLQVFS3FIUnoxoypb8Unorq7C0HaQIKDaHapSg8GdWQcwVJqNZuOUgTUGgqqluDwpNRDZnaXwpORXV2y0GagIKTUc1aFJ6Masic/lJ4MqqxWw7SBBSejGrWovBkVEMcpDYcpIkoQEJjz4HCk1ENmdtfCpDQWHvLQZqhVYiEwpNRDVnSX4dovlOQ/vjzL9sZCk9GNcT9bcNB2ikKT0Y1xP1tw0HaKQpPRjXE/W3DQdopCk9GNcT9bcNB2ikKT0Y1xP1tw0HaKQpPRjXE/W3DQdoxCpDQ2CHubxsO0s6tCZG4v204SJ1zf9twkDrn/rbhIHXO/W3DQeqc+9uGg9Q597cNB6lz7m8bDlLn3N82HKTOub9tOEidc3/bcJA65/624SB1zv1tw0HqnPvbhoPUOfe3DQepc+5vGw5S59zfNg4fpB9/e3nz6PETvCZffP3dzXufPL13/ur5i1OdvPPh1b3rqonrH3z27N71o3CQbmkfRD+nyD0f2kPhxQ8/HztIESKh67F4dREUohweLVoeU99rrGri/ZE4SLeGwqD9oX1Uz2ddB0l/WHxzUJB0Lq7XRVAwtDjxPgIZC6pjLU5cV4jGFnLPHKRbOQyxd4bE0yj2VqZarD/qQscT4vRt8OYPGbpOIdD4HBSp4arX/EQ6thqkoV6rzxGkQF/G2SlYR1/ooSCFGqT69AkUpNMCvRmra/n8kThIt5Y8kUK+ls9LzOsg/WPsiaTzY/fYMwfpVg3SUK/rEynqoqZ+qWpfnPbgpQVJ4o/P58aCJFRzBA7SrRok9XNIDlLsi6jVfop9omvaExcbpBqa/JQaemLpnIN0XPlJo/0Q/Y9+07g4zkEKeq/rOn7xw883/weL8jXBygP/iQAAAABJRU5ErkJggg==" />
+                    </ui:WaitImageVanish.Image>
+                    <ui:WaitImageVanish.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='智奇APS高级排程系统' /&gt;" TimeoutMS="6000" WaitForReady="COMPLETE" />
+                    </ui:WaitImageVanish.Target>
+                  </ui:WaitImageVanish>
+                  <ui:Click DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="2000" DisplayName="Click 'BUTTON  excelNewMateria...'" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="6e804785f7071f155802868e7ca63bec" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl tag='BUTTON' aaname='全部导出' /&gt;" TimeoutMS="10000" WaitForReady="COMPLETE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_14">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_15">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[successFlagArg]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Throw Exception="[new exception(&quot;表格未加载出来&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_3" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <Sequence DisplayName="导年限报表" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click image(点击保存的箭头) " sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                <ui:ClickImage.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:ClickImage.CursorPosition>
+                <ui:ClickImage.Image>
+                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIsAAAAXCAYAAAA7vbzHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ+SURBVGhD7ZVrcuowDIW9qGQ3TVjLJfD/bqIEZrqOOwnDNugD+tqBriU/kB2FhNBpC6Ez34BlyQ+dY6o+Pz9hLDw8PIjxvmB929+5a18C6uPjA8YCCirF+9JlFqnmmriZ5QRGb5b393cYCyioFO9Ll1mkmmviZpYTGL1Z3t7ewLOagJqszKdSMjjPa4gNzFMFk1Uc/12goFK8L11mkWqGsJoIfW/tvYU0S2G+wfEKJmoCKz7HalcTl3cagVnwkCS4Xjydb4JEgm3aeqE20jls4vW+mUsxC+K1wLHt+2aeCr3lwptHS9pt5pC6nnOzRMY5BfX6+gqGJeQqhyV+X+aQztY2ztBxlS8b8WWuIF+GsWOsZ/rSbh1c01/c7I/rifufCQoqxfvSZRapZihBT33fmUbEGmYpH4dgn6mPvD6dwVrIC3XFdZkhbY03Syxgb7OsZ5DqC8yw3osewy6E+e7AtpbPzahBeNgUZmsb/yIuzSxBD6nvkTlYLyk/1sYh6ebgerix3i94/FYXtd/vYb+vjZP0gjTGxflBOS6H1eVLN47Bl4C/ErWP1eR2O8Z99EFrn8+wF2zEzwAF5WPxfhae5+gyi1QzFPPLYsesF8tcP6K6GfdjfHxOT+FehsMagR4depJZqEC/ZG6WQFAW54fDOr5xQG0cyo1iDsPzm2byYH2bkQYiCSo1M85xfLdZgnPZvnNxA0MFxH1um4vySDM0m8sNUbvdDsqigLpEI5SA44C2eF1AohJIkgSKOprb1VAk+iJlHC/pf24ZxEwuNiTMl3LPAwWV4lwUad7RZRapZiglGsH1g2uAfU+0XlJ//NyhpzJOs2gNX2/HEWQWwh6oLhJh8Qi94N8cN8RD6c9C10p5nLYLOsh83DB27YYRh3NMUDyjFOf8CrO4vmDPo0eM2iVFfcgRe8fnBLMceaDq5eUFiDIDlZXmO4tlmY7rxbOiCueIymxcSfEMyiCGlJApKW6o0Kj+DMdzh4CCSvG+dJlFqhlKmSnISuwjf3S21xWK2uyNqcHvcV2M0yzusakzazRpN4sb208UsrnIqWaJ8suC1ZqDJs6U2BD9a1T52vO5FLOg6IGogTYosO6T7mOgV9DbNl3iOSEP99LrB1prLQo9Vs/Pz0As8EAL+l5N9UGSKVRRfKEvkUwrk09UMNWbTSs35vEMFkHMgGsf1ljQxb3j7T4E2/erQEGleF+6zCLVfAmuF/iJQi5MHPXwPaqm9Gtjet6mS3Mu1MNCazFdrBcaZgkOwOJuTEby4+hQ9jJ8A1fnwYO0zXmOXXY4F20W6muzJ06vo7poaN5p402l6aWHQT09PcF38++PPvjdvTiH3N/pCx2ZHwoKKsX70mUWqeYS6NLD8SNm+SluZjkP9fj4CGMBBZXifekyi1RzTdzMcgKjN8t2u4WxgIJK8b50mUWquSZuZjmBcZtlC/8B9+FqwXjFlC0AAAAASUVORK5CYII=" />
+                </ui:ClickImage.Image>
+                <ui:ClickImage.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' title='智奇APS高级排程系统 - Internet Explorer' /&gt;" TimeoutMS="300000" WaitForReady="COMPLETE" />
+                </ui:ClickImage.Target>
+              </ui:ClickImage>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  另存为(A)'" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="1ac9c32fae3597f13b9155687459eab4" Selector="&lt;wnd app='iexplore.exe' cls='*' /&gt;&lt;ctrl name='上下文' role='popup menu' /&gt;&lt;ctrl automationid='53409' /&gt;" WaitForReady="COMPLETE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'ComboBox'" EmptyField="False" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[directoryResult+fileName]">
+                <ui:TypeInto.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5ff8c660fd89ee3adfd56d6a016c8dae" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='另存为' /&gt;&lt;wnd aaname='浏览器窗格' cls='DirectUIHWND' /&gt;&lt;wnd aaname='文件名:' cls='ComboBox' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:TypeInto.Target>
+              </ui:TypeInto>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="df74501160983e99fa67cb2af84229ea" Selector="&lt;wnd app='iexplore.exe' cls='#32770' idx='1' title='另存为' /&gt;&lt;wnd ctrlid='1' title='保存(&amp;amp;S)' /&gt;" WaitForReady="INTERACTIVE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                <ui:Click.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:Click.CursorPosition>
+                <ui:Click.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="51cc2e36d58afb7df5f4c22749d1a274" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='确认另存为' /&gt;&lt;wnd aaname='确认另存为' cls='DirectUIHWND' /&gt;&lt;wnd aaname='是(Y)' cls='Button' title='是(&amp;amp;Y)' /&gt;" WaitForReady="COMPLETE" />
+                </ui:Click.Target>
+              </ui:Click>
+              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click image 'iexplore.exe  智奇APS高级排程...'" sap2010:WorkflowViewState.IdRef="ClickImage_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                <ui:ClickImage.CursorPosition>
+                  <ui:CursorPosition Position="Center">
+                    <ui:CursorPosition.OffsetX>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetX>
+                    <ui:CursorPosition.OffsetY>
+                      <InArgument x:TypeArguments="x:Int32" />
+                    </ui:CursorPosition.OffsetY>
+                  </ui:CursorPosition>
+                </ui:ClickImage.CursorPosition>
+                <ui:ClickImage.Image>
+                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAeCAYAAABNChwpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH0SURBVFhH7ZZbLwNBGIb3h0uEOPwBF860QgRRoeVOnM8hznW6QHUd0tpDSav4zFuGsdnZndkLe6PJm81uv/Z5dubb2TFM06Q4Y9SNXlOcMepTJsUZo2HygeKM0ThVoDjzLyAVaJu1aHzbpf5lm5oz/jVhaUoXqHPBoomdEnXOW741UoHhDYcuC1U6vX2hoXVHWwLwPia/n6tQ3qpSerfkWycVaJ+zaOeqTKXyG13c60lw+FG+Qk+VdzphN4Fzv1qpAP6ke9GmPXYHOhJe+NndCw2sOtSSKfrWBzahV+KcSQyuySW88NMveJB0oACiKiHCUYfeCYMjoQKITALX+fd4Wjgcc55UgCNKAgggPUwCXS1KtE4Xa/Bjk8MrlFxRgyPKAohXAg02m33+hmfZMaEBR7QEEK8ETxQ4oi2AYNhn9p/IZWB80PEYCVz3qw9KpBEQ55wH0yE2pmq0eyCx8gPHsGMkxJ7QlVAW4HBAAYMEzjHsvUs2Hdz8rHw6EkoCn3DnFxzTwCE4RpUIFQiDi3VRJAIFVOE8eASxHB8KL6IwCamALpyHS4hvwyAJqQDWfr6246gC5/FK4N2A3/vVSgXGtlzKPVZrj5gOnOd7OlhPPLivlNnT3BFhTziy6db2dLpwHkh0LdiUYnvLDt094V8lZoECfQCAPCGMSugmOAAAAABJRU5ErkJggg==" />
+                </ui:ClickImage.Image>
+                <ui:ClickImage.Target>
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='智奇APS高级排程系统' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+                </ui:ClickImage.Target>
+              </ui:ClickImage>
+            </Sequence>
+          </Sequence>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[successFlagArg]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="新造及非高铁主材需求导出结束" />
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[successFlagArg]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;发生异常&quot;+exception.ToString]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <sads:DebugSymbol.Symbol>d0RDOlxaUVJQQVxaUVJQQVwxM0FQU+aVsOaNruWkhOeQhlzmlrDpgKDlj4rpnZ7pq5jpk4HkuLvmnZDpnIDmsYIueGFtbGJIA4YDDgIBAUkFhAMQAgECUgnmAhQCARDuAg2AAxgCAQNTC1OLAQIBd1QLbRYCAWduC9QCFgIBHNUCC9wCFAIBGN0CC+QCFAIBE+UCC+UCiwECARHvAg/2AhgCAQz3Ag/+AhgCAQf/Ag//ApABAgEEU3hTiAECAXhVDVwWAgFyXQ1kFgIBbWUNbBYCAWhvDX0YAgFlfg2MARgCAWONAQ2bARgCAWGcAQ2gASICAVyhAQ2oASICAVipAQ37ARICATL8AQ3TAhgCAR3aAjfaAjsCARvXAjjXAkUCARniAjfiAkQCARbfAjjfAkgCARTlAnjlAogBAgES9AI79AJAAgEP8QI88QJJAgEN/AI7/AJIAgEK+QI8+QJMAgEI/wJm/wKNAQIBBVo4WkwCAXVXOVdKAgFzYjhiTgIBcF85X0MCAW5qOGpFAgFrZzlnPwIBaXugAXvtAQIBZooBoAGKAewBAgFkmQGgAZkB8QECAWKeAYsBngHnAgIBYJ4B8gKeAfkCAgFfnAFKnAFaAgFdpgFSpgF2AgFbpgGBAaYBhwECAVqjATujAUACAVmpARupASsCATOrARHkARwCAUHnARH5ARwCATX9AQ+OAh8CAS6PAg+dAhoCASyeAg+iAh0CASejAg+xAhoCASWyAg/AAhoCASLBAg/SAh8CAR6sAROwASECAVSxARO1ASECAVC2ARPEAR4CAU7FARPMASgCAUrNARPUASgCAUbVARPjAR4CAULoARPvARwCAT3wARP3ARwCATj4ARP4AXcCATaMAlSMAqwBAgExjAK3AYwCvwECATCJAj2JAkICAS+bAqIBmwKaAgIBLaACogGgArYCAgErngKkAp4CwAICASivAqIBrwKUAgIBJr4CogG+AswCAgEksgJssgJyAgEj0AJU0AJ4AgEh0AKDAdACiQECASDNAj3NAkICAR+uAaYBrgGJAgIBV6wBuQKsAdQCAgFVswGmAbMBigICAVOxAbkCsQHUAgIBUcIBpgHCAZMCAgFPygFYygF8AgFNygGHAcoBjQECAUzHAUHHAUYCAUvSAVjSAXwCAUnSAYcB0gGNAQIBSM8BQc8BRgIBR+EBkQHhAeEBAgFF4QHsAeEB8wECAUTVAVXVAVsCAUPtAT/tAUQCAUDqAUDqAU0CAT71AT/1AUwCATvyAUDyAVACATn4AST4AUoCATc=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="648,95" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="648,53">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="Hover_1" sap:VirtualizedContainerService.HintSize="626,53">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="UiElementExists_3" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="WaitImageVanish_2" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="TypeInto_6" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="TypeInto_7" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="Click_9" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="WaitImageVanish_3" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="WaitImageVanish_4" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_10" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="336,1016">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Throw_3" sap:VirtualizedContainerService.HintSize="243,22" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="265,348">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="626,1169">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ClickImage_4" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_8" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="ClickImage_3" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="626,53">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="648,2063">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="648,61" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="648,61" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="648,95" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="670,2752">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="243,63" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="265,389">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="674,23">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="688,2989" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="710,3113">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="新造及非高铁主材需求_1" sap:VirtualizedContainerService.HintSize="750,3193" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

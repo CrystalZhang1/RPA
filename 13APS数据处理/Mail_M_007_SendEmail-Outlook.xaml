@@ -1,0 +1,406 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Mail_M_007_SendEmail-Outlook"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ToListArg" Type="InArgument(x:String)" />
+    <x:Property Name="AccountArg" Type="InArgument(x:String)" />
+    <x:Property Name="CcListArg" Type="InArgument(x:String)" />
+    <x:Property Name="BccListArg" Type="InArgument(x:String)" />
+    <x:Property Name="PathTempMailArg" Type="InArgument(x:String)" />
+    <x:Property Name="SubjectArg" Type="InArgument(x:String)" />
+    <x:Property Name="PathAttachFile1Arg" Type="InArgument(x:String)" />
+    <x:Property Name="PathAttachFile2Arg" Type="InArgument(x:String)" />
+    <x:Property Name="PathAttachFile3Arg" Type="InArgument(x:String)" />
+    <x:Property Name="MailBodyArg" Type="InArgument(x:String)" />
+    <x:Property Name="SuccessFlagArg" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="replaceDictionaryArg" Type="InArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>zzzzz_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="successFlag" />
+    </TryCatch.Variables>
+    <TryCatch.Try>
+      <Sequence sap2010:Annotation.AnnotationText="Invoke code：None&#xA;&#xA;Introduction：Send mail through Outlook, and the number of attachments is three. Use the message body in the template first.&#xA;&#xA;Attention： The mail template is a text document. Please write the message body template in HTML format. In the absence of a template, the text is in string format. If the number of attachments is greater than 3, please modify the code to add. Please ensure outlook version is higher than 2010.&#xA;&#xA;Author：Carlos Song &lt;Carlos.Song@cn.ey.com&gt;;+86 15611572990&#xA;Edit：Carlos Song &lt;Carlos.Song@cn.ey.com&gt;;+86 15611572990" DisplayName="SendOutlookEmail" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="pathTempMail">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="mailBody">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[new dictionary(of string,string)]" Name="dictionary" />
+          <Variable x:TypeArguments="x:String" Name="toList">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="subject">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="ccList">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="bccList">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="account">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="pathAttachFile1">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="pathAttachFile2">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="pathAttachFile3">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+        </Sequence.Variables>
+        <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="Mail_M_007_SendEmail-Outlook Begin" />
+        <Sequence DisplayName="变量准备" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[toList]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[ToListArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[ccList]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[CcListArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[bccList]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[BccListArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[account]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[AccountArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[subject]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[SubjectArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[pathTempMail]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[PathTempMailArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_17">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictionary]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[replaceDictionaryArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[pathAttachFile1]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[PathAttachFile1Arg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[pathAttachFile2]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[PathAttachFile2Arg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[pathAttachFile3]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[PathAttachFile3Arg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[mailBody]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[MailBodyArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+        <If Condition="[file.Exists(pathTempMail)]" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <ui:ReadTextFile Content="[mailBody]" DisplayName="Read text file" FileName="[pathTempMail]" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+              <If Condition="[string.IsNullOrWhiteSpace(mailBody)]" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Else>
+                  <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:String)" DisplayName="For each" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[dictionary]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:String)">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:String)" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[mailBody]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[mailBody.Replace(item.key,item.value)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
+                </If.Else>
+              </If>
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_12">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[mailBody]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">[string.Format(mailBody,"")]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </If.Then>
+        </If>
+        <ui:SendOutlookMail MailMessage="{x:Null}" Account="[account]" Bcc="[bccList]" Body="[mailBody]" Cc="[ccList]" DisplayName="Send Outlook Mail Message" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="True" IsDraft="False" Subject="[subject]" TimeoutMS="10000" To="[toList]">
+          <ui:SendOutlookMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+              <InArgument x:TypeArguments="x:String">[pathAttachFile1]</InArgument>
+              <InArgument x:TypeArguments="x:String">[pathAttachFile2]</InArgument>
+              <InArgument x:TypeArguments="x:String">[pathAttachFile3]</InArgument>
+            </scg:List>
+          </ui:SendOutlookMail.Files>
+        </ui:SendOutlookMail>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_15">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap2010:WorkflowViewState.IdRef="Assign_16">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="Mail_M_007_SendEmail-Outlook End" />
+      </Sequence>
+    </TryCatch.Try>
+    <TryCatch.Catches>
+      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <ActivityAction x:TypeArguments="s:Exception">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Sequence" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_14">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Mail_M_007_SendEmail-Outlook Error&quot;+exception.ToString]" />
+          </Sequence>
+        </ActivityAction>
+      </Catch>
+    </TryCatch.Catches>
+    <sads:DebugSymbol.Symbol>d1pDOlxVaVBhdGggd29ya3NwYWNlXOaZuuWlh+mTgei3r+mhueebrlwxM0FQU+aVsOaNruWkhOeQhlxNYWlsX01fMDA3X1NlbmRFbWFpbC1PdXRsb29rLnhhbWxeTwPEAg4CAQFUB6UCEgIBD60CC78CFgIBAlgPWD4CARpdD10+AgEZYFJgdgIBGGMPYz4CARdoD2g+AgEWbQ9tPgIBFXIPcj4CARR3D3c+AgETfA98PgIBEoEBD4EBPgIBEYYBD4YBPgIBEIoBCYoBnQEDAY0BiwEJ5AEUAgFV5QEJigIOAgE6iwIJkwIeAgEmlAIJmwISAgEinAIJowISAgEdpAIJpAKbAQIBG64CDbUCFgIBC7YCDb0CFgIBBr4CDb4CwwECAQOKAXaKAZoBAwGOAYwBC5MBFAMBiAGUAQubARQDAYMBnAELowEUAgF+pAELqwEUAgF5rAELswEUAgF0tAELuwEUAgFvvAELwwEUAgFqxAELywEUAgFlzAEL0wEUAgFg1AEL2wEUAgFb3AEL4wEUAgFW5QEX5QE0AgE75wENiAIYAgE8jwI2jwJHAgE4iwKfAosCqQICATaLAjyLAkcCATSOAjaOAkcCATKLAkyLAlcCATCLApQCiwKbAgIBL4sCbYsCdwIBLYsCXYsCaQIBK4sC/gGLAokCAgEpkAI2kAJHAgEnmQI1mQI5AgEllgI2lgJDAgEjoQI1oQJCAgEgngI2ngJGAgEepAJ2pAKYAQIBHLMCObMCPgIBDrACOrACRwIBDLsCObsCRgIBCbgCOrgCSgIBB74Ce74CwAECAQSRATaRAUEDAYsBjgE3jgE/AwGJAZkBNpkBQQMBhgGWATeWAT8DAYQBoQE2oQFCAwGBAZ4BN54BQAIBf6kBNqkBQgIBfKYBN6YBQAIBerEBNrEBQgIBd64BN64BQAIBdbkBNrkBRwIBcrYBN7YBRQIBcMEBUMEBZgIBbb4BUb4BXQIBa8kBNskBSgIBaMYBN8YBSAIBZtEBNtEBSgIBY84BN84BSAIBYdkBNtkBSgIBXtYBN9YBSAIBXOEBNuEBQwIBWd4BN94BQQIBV+gBD+gBnwECAVDpAQ//ARQCAUKAAg+HAhgCAT3oAVvoAWsCAVPoASjoATQCAVHpAR3pAUQCAUPrARP9ASACAUWFAjqFAlYCAUCCAjuCAkUCAT7rAaIB6wGwAQIBTvEBGfoBJAIBRvIBG/kBJAIBR/cBRvcBbQIBSvQBR/QBUQIBSA==</sads:DebugSymbol.Symbol>
+  </TryCatch>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="611,91" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_17" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="611,1184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadTextFile_1" sap:VirtualizedContainerService.HintSize="464,59" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="264,184">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="287,318" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,466" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="464,60" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="486,789">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="611,937" />
+      <sap2010:ViewStateData Id="SendOutlookMail_1" sap:VirtualizedContainerService.HintSize="611,145" />
+      <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="611,60" />
+      <sap2010:ViewStateData Id="Assign_16" sap:VirtualizedContainerService.HintSize="611,60" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="611,91" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="633,3109">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="336,415">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="637,484">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="651,3903" />
+      <sap2010:ViewStateData Id="zzzzz_1" sap:VirtualizedContainerService.HintSize="691,3983">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

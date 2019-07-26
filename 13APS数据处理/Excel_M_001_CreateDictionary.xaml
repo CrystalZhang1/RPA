@@ -1,0 +1,346 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Excel_M_001_CreateDictionary"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="NameFileSheetArg" Type="InArgument(x:String)" />
+    <x:Property Name="PathFileArg" Type="InArgument(x:String)" />
+    <x:Property Name="NameKeyArg" Type="InArgument(x:String)" />
+    <x:Property Name="NameValueArg" Type="InArgument(x:String)" />
+    <x:Property Name="DictionaryOutputArg" Type="OutArgument(scg:Dictionary(x:String, x:String))" />
+    <x:Property Name="SuccessFlagArg" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>_23_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch.Variables>
+      <Variable x:TypeArguments="x:Boolean" Default="True" Name="successFlag" />
+    </TryCatch.Variables>
+    <TryCatch.Try>
+      <Sequence sap2010:Annotation.AnnotationText="Invoke code：None&#xD;&#xA;&#xA;Introduction：Create a dictionary by any two columns of Excel, Stop running and error when the keyword is repeated.&#xD;&#xA;&#xD;&#xA;Attention：None&#xD;&#xA;&#xA;Author：Carlos Song &lt;Carlos.Song@cn.ey.com&gt;;+86 15611572990&#xA;Edit：Carlos Song &lt;Carlos.Song@cn.ey.com&gt;;+86 15611572990" DisplayName="CreateDictionary" sap2010:WorkflowViewState.IdRef="Sequence_30">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="sd:DataTable" Default="[new DataTable()]" Name="dataTable" />
+          <Variable x:TypeArguments="x:String" Name="path">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="sheetName">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="key">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="x:String" Name="value">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String" Value="" />
+            </Variable.Default>
+          </Variable>
+          <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[new Dictionary(of string ,string)]" Name="dictionary" />
+        </Sequence.Variables>
+        <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="Excel_M_001_CreateDictionary Begin" />
+        <Sequence DisplayName="Sequnence" sap2010:WorkflowViewState.IdRef="Sequence_26">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_23">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[path]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[PathFileArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_24">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[sheetName]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[NameFileSheetArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_25">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[key]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[NameKeyArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_26">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[value]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[NameValueArg]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[&quot;Key----&gt;&quot;+key]" />
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[&quot;Value----&gt;&quot;+value]" />
+        </Sequence>
+        <Sequence DisplayName="Sequnence" sap2010:WorkflowViewState.IdRef="Sequence_27">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="QWE" />
+          </Sequence.Variables>
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" Visible="False" WorkbookPath="[path]">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <ui:ExcelReadRange AddHeaders="True" DataTable="[dataTable]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_3" SheetName="[sheetName]">
+                  <ui:ExcelReadRange.Range>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </ui:ExcelReadRange.Range>
+                </ui:ExcelReadRange>
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+          </ui:ExcelApplicationScope>
+          <If Condition="[dataTable.DefaultView.ToTable(True,key).Rows.Count&lt;dataTable.Rows.Count]" sap2010:WorkflowViewState.IdRef="If_11">
+            <If.Then>
+              <Throw Exception="[new exception(&quot;Key值有重复，重复数量至少&quot;+(dataTable.Rows.Count-dataTable.DefaultView.ToTable(True,key).Rows.Count+1).ToString+&quot;个，请检查&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_3" />
+            </If.Then>
+          </If>
+        </Sequence>
+        <Sequence DisplayName="Sequnence" sap2010:WorkflowViewState.IdRef="Sequence_28">
+          <ui:ForEach x:TypeArguments="sd:DataRow" DisplayName="For each" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[dataTable.Rows]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[dictionary]" DisplayName="Add to dictionary" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_7" Key="[row(key).ToString]" Value="[row(value).ToString]" />
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
+        </Sequence>
+        <Sequence DisplayName="Sequnence" sap2010:WorkflowViewState.IdRef="Sequence_29">
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_27">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[DictionaryOutputArg]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictionary]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap2010:WorkflowViewState.IdRef="Assign_28">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_11" Text="[&quot;Number of keys---&gt;&quot;+dictionary.Keys.Count.ToString]" />
+        </Sequence>
+        <Assign>
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+          </Assign.Value>
+          <sap2010:WorkflowViewState.IdRef>Assign_31</sap2010:WorkflowViewState.IdRef>
+        </Assign>
+        <Assign>
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+          </Assign.Value>
+          <sap2010:WorkflowViewState.IdRef>Assign_32</sap2010:WorkflowViewState.IdRef>
+        </Assign>
+        <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="Excel_M_001_CreateDictionary End" />
+      </Sequence>
+    </TryCatch.Try>
+    <TryCatch.Catches>
+      <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <ActivityAction x:TypeArguments="s:Exception">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="失败标记" sap2010:WorkflowViewState.IdRef="Sequence_31">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_29">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_30">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[SuccessFlagArg]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Error" Message="[&quot;Excel_M_001_CreateDictionary Error&quot;+exception.ToString]" />
+          </Sequence>
+        </ActivityAction>
+      </Catch>
+    </TryCatch.Catches>
+    <sads:DebugSymbol.Symbol>d1JDOlzlrovluIXls7BcUlBBXEVZX1JQQeWFseS6q+W6k1zlhbHkuqvlupPku6PnoIFcRXhjZWxfTV8wMDFfQ3JlYXRlRGljdGlvbmFyeS54YW1sSE0D+wEOAgEBTzVPOwIBD1IH3AESAgEQ5AEL9gEWAgECVDxUTwIBFlcPVz4CARVcD1w+AgEUYQ9hPgIBE2YPZj4CARJpUml3AgERawlrnQECAWFsCY8BFAIBRpABCakBFAIBOKoBCbUBFAIBMLYBCcgBFAIBIskBCdEBEgIBHtIBCdoBEgIBGdsBCdsBmwECARflAQ3sARYCAQvtAQ30ARYCAQb1AQ31AcMBAgEDa3ZrmgECAWJtC3QUAgFcdQt8FAIBV30LhAEUAgFShQELjAEUAgFNjQELjQGEAQIBSo4BC44BiQECAUeUAQujASYCAT2kAQuoARACATmrAQu0ARgCATG3AQu+ARQCASu/AQvGARQCASbHAQvHAaoBAgEjzgE1zgE5AgEhywE2ywFDAgEf1wE11wFCAgEc1AE21AFGAgEa2wF22wGYAQIBGOoBOeoBPgIBDucBOucBRwIBDPIBOfIBRgIBCe8BOu8BSgIBB/UBe/UBwAECAQRyNnJDAgFfbzdvPQIBXXo2ekgCAVp3N3dCAgFYggE2ggFCAgFVfzd/PAIBU4oBNooBRAIBUIcBN4cBPgIBTo0BYo0BgQECAUuOAWOOAYYBAgFIlAG2AZQBvgECAUSaARGgASUCAT6kARmkAWcCATqmAQ+mAeEBAgE7qwGAAasBkgECATexARGxAfYBAgEyvAFQvAFcAgEuuQFRuQFmAgEsxAE3xAFEAgEpwQE4wQFIAgEnxwFjxwGnAQIBJJoBQJoBTQIBQp0BF50BRgIBQZoBpAGaAbEBAgE/pgEgpgG0AQIBPLEB3AGxAfMBAgE2sQFXsQFlAgE0sQHAAbEB1QECATM=</sads:DebugSymbol.Symbol>
+  </TryCatch>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_7" sap:VirtualizedContainerService.HintSize="486,91" />
+      <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_24" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_25" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_26" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="WriteLine_9" sap:VirtualizedContainerService.HintSize="242,61" />
+      <sap2010:ViewStateData Id="WriteLine_10" sap:VirtualizedContainerService.HintSize="242,61" />
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="486,686">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelReadRange_3" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="ExcelApplicationScope_3" sap:VirtualizedContainerService.HintSize="464,168" />
+      <sap2010:ViewStateData Id="Throw_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_11" sap:VirtualizedContainerService.HintSize="464,208" />
+      <sap2010:ViewStateData Id="Sequence_27" sap:VirtualizedContainerService.HintSize="486,540">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddToDictionary`2_7" sap:VirtualizedContainerService.HintSize="378,138" />
+      <sap2010:ViewStateData Id="ForEach`1_6" sap:VirtualizedContainerService.HintSize="394,272">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_28" sap:VirtualizedContainerService.HintSize="486,396">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_27" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_28" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="WriteLine_11" sap:VirtualizedContainerService.HintSize="242,61" />
+      <sap2010:ViewStateData Id="Sequence_29" sap:VirtualizedContainerService.HintSize="486,385">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_31" sap:VirtualizedContainerService.HintSize="486,60" />
+      <sap2010:ViewStateData Id="Assign_32" sap:VirtualizedContainerService.HintSize="486,60" />
+      <sap2010:ViewStateData Id="LogMessage_8" sap:VirtualizedContainerService.HintSize="486,91" />
+      <sap2010:ViewStateData Id="Sequence_30" sap:VirtualizedContainerService.HintSize="508,2860">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_29" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Assign_30" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="LogMessage_9" sap:VirtualizedContainerService.HintSize="314,91" />
+      <sap2010:ViewStateData Id="Sequence_31" sap:VirtualizedContainerService.HintSize="336,415">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="512,484">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="526,4969" />
+      <sap2010:ViewStateData Id="_23_1" sap:VirtualizedContainerService.HintSize="566,5729">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+            <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

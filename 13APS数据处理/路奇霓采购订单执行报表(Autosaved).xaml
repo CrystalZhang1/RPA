@@ -1,0 +1,426 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="路奇霓采购订单执行报表"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="directoryResultArg" Type="InArgument(x:String)" />
+    <x:Property Name="successFlagArg" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="directoryASPListName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>路奇霓采购订单执行报表_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="路奇霓采购订单执行报表" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <TryCatch DisplayName="Try catch" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="x:String" Name="fileName" />
+        <Variable x:TypeArguments="x:Boolean" Name="successFlag" />
+        <Variable x:TypeArguments="x:String" Name="directoryResult" />
+        <Variable x:TypeArguments="x:Boolean" Name="elementExist" />
+      </TryCatch.Variables>
+      <TryCatch.Try>
+        <Sequence DisplayName="导出过程" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="路奇霓采购订单执行报表导出开始" />
+          <Sequence DisplayName="变量准备" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[directoryResult]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[directoryResultArg]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[fileName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[directoryASPListName]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
+          <Sequence DisplayName="采购类报表" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Default="[new datatable()]" Name="dtLuQiNi" />
+            </Sequence.Variables>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  http://172.31.2.21:1...'" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="43ffad1241eb8a75e67c33eec9a54d5c" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='决策支持报表' tag='A' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:Hover DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Hover 'A  http://172.31.2.21:1...'" sap2010:WorkflowViewState.IdRef="Hover_1" SendWindowMessages="False" SimulateHover="False">
+              <ui:Hover.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Hover.CursorPosition>
+              <ui:Hover.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="3efee6069ba09ded3ba78bf8e7cc987a" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='采购类报表' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Hover.Target>
+            </ui:Hover>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  http://172.31.2.21:1...'" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="85fb18dc2f68bbe3a0a605ff80cd6172" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl aaname='路奇霓采购订单执行报表' tag='A' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:UiElementExists DisplayName="Element Exists 'TBODY'" Exists="[elementExist]" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b300b2defc206fcaf79a3d37dcc21c25" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl id='tbl_InfoTable' tag='TABLE' /&gt;&lt;webctrl idx='1' parentid='tbl_InfoTable' tag='TD' /&gt;" TimeoutMS="10000" WaitForReady="COMPLETE" />
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[elementExist]" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="5968d6d00e9f2f69f05d310b6b09799e" Selector="&lt;html title='智奇APS高级排程系统' /&gt;&lt;webctrl parentid='div_materialInfo' tag='INPUT' type='button' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click image 'iexplore.exe 智奇APS高级排程系统'" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+                    <ui:ClickImage.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:ClickImage.CursorPosition>
+                    <ui:ClickImage.Image>
+                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAH8AAAAWCAYAAADpRkOBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPnSURBVGhD7ZVrcpswEIB1KLhNwGepwf97iVh4JufogMfXcOJnkhtstXp5JRZDccZ1YnfmG8NqVxL7San4/PyEe+Dl5YWNDwXru/5dOvf/Qnx8fMA9gIK4+FD65HM1t85D/kB+pPz393e4B1AQFx9Kn3yu5tZ5yB/Ij5R/PB5Bs5iAmCzMrxA8OO7yPSuYpQImizh+W6AgLj6UPvlczRgWE6bvnb23aGcpzFb4voCJmMCCjpHaxcTlHU/ycVEtUCWns5VP9pBJOjfYRTqDVTzflfku8hHvAt9t31ezlOntSaS7hNrdagap6zmVHx0EcTgc4HCoIBc5VPhc5ZCWSxXDOEHFRV614lUuIK/C2DmWpfoINw/O6T/ErI/zsetfCAri4kPpk8/VjCXoqe87caRZQpnS9xDss+4jrU9LWJIcLT8WMlj+soRUbajE+uBEUsgGMd9twNbSsVJ/MH5UCuXSxr+I7yY/6KHueySb9FLnx24cnDeL2O8bNakp3u/3sMdkujDF5WhMXV659xg8qXiLGx9r9Gm077iO2nzj8wl2w634BaAg+s5+n4XmOfrkczVjMTffvpNeVLm6FE077t/xMjmfzHcZTnMILUTdNCo/EETidDGsoxMFNHirQ/HmsND89uHwYH3XwRgJJ4hrTpzjuLb8YF+27/TyBAckIO5z11gDQhYFNBLFStjtdiFd8aaARCSQJAkUTTS2a6BI1MZkHJf6/ywZxEwufmCYz+VeBgri4rTJ3LijTz5XMxaJYl0/qAPse6J8cf3xY6ee8jhnEgRdoCkSJjlCLfA7xwlwEfVbqFouj9K1YYc+TPQA2LlbB2s85wThHrk45Sbku75gz6NLie6SojnlsL2jY0r+druFrcxAZBL0s0PFskzFVXJW1OGYpjYT1Vw8AxnEEAmZ4OKGGg+e38P53DGgIC4+lD75XM1YZCYgk9hHeolsr2u8KO3emBp8jutinLMu+e7d/qIYMzHlX+VH+bIgtWbDiTtk+IHqr0Xtay/nu8hHiYGkwA1eCtUn1cfAV9DbLi/xWA1is9nAZo4LzAGf66maOJlCHcXnalPJtNbPhhqmaqJp7d5pPIN5EDPg3Kc55vpD/Im062jIul8FCuLiQ+mTz9V8Ca4X+Kv6lM1NHH34HtVT/dfA9LzLS3sskB9MSOLuXR8M/x4tYjencYcnBjfZNeY5t/nxfGv5uq/tnjhfZ70o9Lhz4w+Jkv/29gbX5M8vtZGnZ3YMeX5SGzwzPhYUxMWH0iefq7l1ri7/f/GQ30a8vr7CPYCCuPhQ+uRzNbfOQ/5AfqT89XoN9wAK4uJD6ZPP1dw2a/gLtUHXeuUikb8AAAAASUVORK5CYII=" />
+                    </ui:ClickImage.Image>
+                    <ui:ClickImage.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='iexplore.exe' cls='IEFrame' title='智奇APS高级排程系统 - Internet Explorer' /&gt;" TimeoutMS="10000" WaitForReady="COMPLETE" />
+                    </ui:ClickImage.Target>
+                  </ui:ClickImage>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  另存为(A)'" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="c1da1aa1deb24e4ec4dbf39ad554a8d0" Selector="&lt;wnd app='iexplore.exe' cls='#32768' /&gt;&lt;ctrl name='上下文' role='popup menu' /&gt;&lt;ctrl automationid='53409' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                  <ui:TypeInto DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" Activate="True" ClickBeforeTyping="False" DisplayName="Type into 'Edit'" EmptyField="True" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="False" SimulateType="False" Text="[directoryResult+fileName]">
+                    <ui:TypeInto.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="baa60605b232bc98dd2931e1eaa68bb7" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='另存为' /&gt;&lt;wnd aaname='浏览器窗格' cls='DirectUIHWND' /&gt;&lt;wnd aaname='文件名:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:TypeInto.Target>
+                  </ui:TypeInto>
+                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="9d5d8847429afe1f1b09f9872ffeb8f8" Selector="&lt;wnd app='iexplore.exe' cls='#32770' idx='1' title='另存为' /&gt;&lt;wnd ctrlid='1' title='保存(&amp;amp;S)' /&gt;" WaitForReady="INTERACTIVE" />
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_7">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[successFlagArg]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Throw Exception="[new exception(&quot;表格未加载出来&quot;)]" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'Button'" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="f2122a6fe42eae1da26727ec467dc769" Selector="&lt;wnd app='iexplore.exe' cls='#32770' title='确认另存为' /&gt;&lt;wnd aaname='确认另存为' cls='DirectUIHWND' /&gt;&lt;wnd aaname='是(Y)' cls='Button' title='是(&amp;amp;Y)' /&gt;" WaitForReady="INTERACTIVE" />
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click image 'iexplore.exe  智奇APS高级排程...'" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False">
+              <ui:ClickImage.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:ClickImage.CursorPosition>
+              <ui:ClickImage.Image>
+                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHkSURBVEhL5dbtL8NAHAfw/uESIR7+AS+Yx02IIAgb74RhHmPx/PwCo1g27bqJGX7uO25Or13vJPrGkm+atr/2095db2eYpklhx2gYu6awYzROmhR2jKbpLIUdo3kmR2HnH6Md8xZNbDs0sGJTa+LnOdW0xHMUSVo0lS5SZNGSzkvoyEaBLnMVOr17oeH1gjYMsJ898F6mTLdWheI7RalGQjsXLEpfPVPx+Y0uHvRgDh7elqlUfqcT9uDYd9dJKC7sWbJplz2pDuwGz+5faHC1QG2JvFTrOZDc8DmDh9b8YTd4+gX61XuiiCosgqjDWKgHIr4o4gfjOD+PUc5B9GEsAETqoghu3MtgjEYRbp/NV8Ejk4NliqWCQSQQRdwwBsn88VMNPGbbqCKIKKGIG+bRBRFlFEGTzu2VyGEYfhipeGMc96r3i9abin3Ig6YWB5dKlPs0mvoG0aR4Y7GPdeBAlIOAAADGPpq0b9mm/ZvvGUgVrot+goUfIJqY3xjb38C+aBAo1unCnqgqyIPPBVPhgTDZ14MlVBfk4bD4L+MHSyjmWj6XYqsC8rhhzMW43l0noeNbDmUeK9XPQQfkqTU16+Os80qJXYWVA9ZIo5tOdY2jC/IA7k7aNMnWWl0qa6S/T44+AIkWq9kDOb5SAAAAAElFTkSuQmCC" />
+              </ui:ClickImage.Image>
+              <ui:ClickImage.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;html title='智奇APS高级排程系统' /&gt;" TimeoutMS="3000" WaitForReady="COMPLETE" />
+              </ui:ClickImage.Target>
+            </ui:ClickImage>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[successFlagArg]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="路奇霓采购订单执行报表导出结束" />
+          </Sequence>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[successFlag]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                </Assign.Value>
+              </Assign>
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:Boolean">[successFlagArg]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:Boolean">[successFlag]</InArgument>
+                </Assign.Value>
+              </Assign>
+              <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;发生异常&quot;+exception.ToString]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <sads:DebugSymbol.Symbol>d1JDOlxaUVJQQVxaUVJQQVwxM0FQU+aVsOaNruWkhOeQhlzot6/lpYfpnJPph4fotK3orqLljZXmiafooYzmiqXooagoQXV0b3NhdmVkKS54YW1sSkoDzwIOAgEBSwXNAhACAQJTCa8CFAIBELcCDckCGAIBA1QLVIwBAgFbVQtmFgIBUGcLrgIWAgERuAIPvwIYAgEMwAIPxwIYAgEHyAIPyAKQAQIBBFR4VIkBAgFcVg1dFgIBVl4NZRYCAVFpQGlTAgESaw15GAIBTXoNiAEYAgFLiQENlwEYAgFJmAENnAEiAgFEnQEN+wESAgEl/AENigIYAgEiiwINnAIdAgEenQINpAIWAgEapQINrAIWAgEVrQINrQKOAQIBE70CO70CQAIBD7oCPLoCSQIBDcUCO8UCSAIBCsICPMICTAIBCMgCZsgCjQECAQVbOFtMAgFZWDlYSgIBV2M4Y04CAVRgOWBDAgFSd4sBd9gBAgFPd+MBd+kBAgFOhgGgAYYB7AECAUyVAaABlQHyAQIBSpoBiwGaAZoCAgFImgGlApoBrAICAUeYAU2YAV0CAUWdARudASsCASafARHkARwCATTnARH5ARwCASiIAqABiALKAgIBJPwBavwBcAIBI5oCUpoCdgIBIZoCgQGaAocBAgEglwI7lwJAAgEfogI5ogI9AgEdnwI6nwJHAgEbqgI5qgJGAgEYpwI6pwJKAgEWrQJ6rQKLAQIBFKABE64BHgIBQq8BE8ABIwIBPsEBE88BHgIBPNABE9QBIQIBN9UBE+MBHgIBNegBE+8BHAIBMPABE/cBHAIBK/gBE/gBdwIBKawBpgGsAZECAgFDvgFYvgGwAQIBQb4BuwG+AcIBAgFAuwFBuwFGAgE/zQGmAc0BowICAT3SAaYB0gHVAgIBO9ABowLQAb8CAgE44QGmAeEBmAICATbtAT/tAUQCATPqAUDqAU0CATH1AT/1AUwCAS7yAUDyAVACASz4AST4AUoCASo=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="648,95" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="648,286">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="Hover_1" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="Click_2" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="UiElementExists_2" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="Click_3" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="ClickImage_1" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Click_4" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="TypeInto_1" sap:VirtualizedContainerService.HintSize="314,134" />
+      <sap2010:ViewStateData Id="Click_5" sap:VirtualizedContainerService.HintSize="314,106" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="336,842">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Throw_2" sap:VirtualizedContainerService.HintSize="243,22" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="265,348">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="626,995" />
+      <sap2010:ViewStateData Id="Click_7" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="ClickImage_2" sap:VirtualizedContainerService.HintSize="626,106" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="626,61" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="626,61" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="626,95" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="648,2332">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="670,2917">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="243,63" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="265,385">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="674,23">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="688,3154" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="710,3278">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="路奇霓采购订单执行报表_1" sap:VirtualizedContainerService.HintSize="750,3358" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

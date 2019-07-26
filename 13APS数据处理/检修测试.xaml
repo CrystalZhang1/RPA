@@ -1,0 +1,264 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="新造测试" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="新造测试_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Core.Activities</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="新造测试" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Default="[new datatable()]" Name="dtVehicleModel" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[new datatable()]" Name="dtSourceFile" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue1" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue2" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue3" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue4" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue5" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue6" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue7" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue8" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue9" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue10" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue11" />
+      <Variable x:TypeArguments="x:Int32" Name="paramStoreValue12" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue12" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue11" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue10" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue9" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue8" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue7" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue6" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue1" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue2" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue3" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue4" />
+      <Variable x:TypeArguments="x:Int32" Name="storeValue5" />
+      <Variable x:TypeArguments="x:Int32" Name="value" />
+    </Sequence.Variables>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="01Source\20180726-原材料匹配分析.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[dtVehicleModel]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="A1" SheetName="CRH1-380材料匹配" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel application scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="03Result\APS数据(2018-11-05).xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[dtSourceFile]" DisplayName="Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" Range="A1" SheetName="可用库存" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:ForEachRow DataTable="[dtSourceFile]" DisplayName="For each row" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;&quot;]" Name="sourceValue" />
+            </Sequence.Variables>
+            <ui:GetRowItem Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="材料编号" DisplayName="Get row item" sap2010:WorkflowViewState.IdRef="GetRowItem_1" Row="[row]">
+              <ui:GetRowItem.Value>
+                <OutArgument x:TypeArguments="ui:GenericValue">[sourceValue]</OutArgument>
+              </ui:GetRowItem.Value>
+            </ui:GetRowItem>
+            <If Condition="[sourceValue=&quot;10901108&quot;]" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <If Condition="[row(&quot;总数&quot;).ToString=&quot;&quot;]" sap2010:WorkflowViewState.IdRef="If_14">
+                    <If.Then>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_55">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[value]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </If.Then>
+                    <If.Else>
+                      <Assign sap2010:WorkflowViewState.IdRef="Assign_56">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[value]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(row("总数").ToString)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </If.Else>
+                  </If>
+                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_21" Text="[row(&quot;总数&quot;).ToString]" />
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_52">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[value]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[Convert.ToInt32(row("总数").ToString)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_53">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[value]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[value+paramStoreValue1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_54">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[paramStoreValue1]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[value]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <WriteLine DisplayName="Write line" sap2010:WorkflowViewState.IdRef="WriteLine_22" Text="[value.ToString]" />
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+    <sads:DebugSymbol.Symbol>dzJDOlxaUVJQQVxaUVJQQVwxM0FQU+aVsOaNruWkhOeQhlzmo4Dkv67mtYvor5UueGFtbDFBA8EBDgIBAUM4Q0sCAQNEOERLAgECXwVqIAIBOGsFdiACATB3Bb8BFQIBBF+gAV/AAQIBP2ULZxYCATlroAFrwQECATdxC3MWAgExdx53LgIBLn0LvAEWAgEFZg1mwgECATpyDXK3AQIBMn9Df1MCAQaBAQ2FAR0CASiGAQ27ARICAQdmPWZPAgE9ZqIBZqYBAgE8ZrEBZr8BAgE7cjxyTAIBNXKfAXKjAQIBNHKuAXK0AQIBM4MBQIMBTQIBLIEBpQGBAawBAgEqgQFQgQFWAgEphgEbhgE/AgEIiAERuQEcAgEJiQETngEYAgEenwETnwGOAQIBHKABE6cBHAIBGKgBE68BHAIBErABE7cBHAIBDbgBE7gBgAECAQqJASGJAU4CAR+LAReSASACASSVARecASACASCfAWufAYsBAgEdpQE9pQFiAgEbogE+ogFFAgEZrQE9rQFVAgEVqgE+qgFFAgETtQE9tQFEAgEQsgE+sgFQAgEOuAFruAF9AgELkAFBkAFCAgEnjQFCjQFJAgElmgFBmgFmAgEjlwFClwFJAgEh</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="ExcelReadRange_1" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,183">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="713,292" />
+      <sap2010:ViewStateData Id="ExcelReadRange_2" sap:VirtualizedContainerService.HintSize="314,59" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,183">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_2" sap:VirtualizedContainerService.HintSize="713,292" />
+      <sap2010:ViewStateData Id="GetRowItem_1" sap:VirtualizedContainerService.HintSize="661,64" />
+      <sap2010:ViewStateData Id="Assign_55" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="Assign_56" sap:VirtualizedContainerService.HintSize="243,61" />
+      <sap2010:ViewStateData Id="If_14" sap:VirtualizedContainerService.HintSize="511,214" />
+      <sap2010:ViewStateData Id="WriteLine_21" sap:VirtualizedContainerService.HintSize="511,63" />
+      <sap2010:ViewStateData Id="Assign_52" sap:VirtualizedContainerService.HintSize="511,61" />
+      <sap2010:ViewStateData Id="Assign_53" sap:VirtualizedContainerService.HintSize="511,61" />
+      <sap2010:ViewStateData Id="Assign_54" sap:VirtualizedContainerService.HintSize="511,61" />
+      <sap2010:ViewStateData Id="WriteLine_22" sap:VirtualizedContainerService.HintSize="511,63" />
+      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="533,847">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="661,1000">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="683,1228">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="713,1379">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="735,2167">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="新造测试_1" sap:VirtualizedContainerService.HintSize="775,2247" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

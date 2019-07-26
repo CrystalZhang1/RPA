@@ -1,0 +1,15 @@
+尊敬的processName流程机器人管理员：<br />
+<br />
+您好！<br />
+<br />
+机器人运行processName流程完成，悉知。<br />
+<br />
+本次运行共导出apsListCount个表格，分别为mailBodyType。<br />
+实际运行<span style="color:#009900;">成功导出表格apsListCountSuccess个</span>，<span style="color:#E53333;">失败apsListCountFail个</span>。<br />
+合并表格以及模板数据导入的表格请参考附件。<br />
+<br />
+运行开始时间dateStart<br />
+运行结束时间dateEnd<br />
+<br />
+谢谢！<br />
+processName流程机器人
